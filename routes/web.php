@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'TodosController@index');
 
-Route::resource('/todos', 'TodosController');
+Route::resource('/todo', 'TodosController');
