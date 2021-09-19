@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use DateTime;
 
-class CategorySeeder extends Seeder
+class TodosSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,9 +20,8 @@ class CategorySeeder extends Seeder
 
         foreach ($data as $item) {
             DB::table('todos')->insert([
-                'title' => $item,
-                'content' => Str::random(50),
-                'due' => new DateTime(),
+                'task' => $item,
+                'isCompleted' => false,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime()
             ]);

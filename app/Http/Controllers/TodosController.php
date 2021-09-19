@@ -36,7 +36,14 @@ class TodosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,
+            ['task' => 'required'],
+            ['task.required' => 'Hãy thêm nội dung công việc']);
+        $todo = new Todo();
+        $todo->task = $request->input('task');
+        $todo->isCompleted = false;
+        $todo->save();
+        return redirect('/');
     }
 
     /**
@@ -70,7 +77,13 @@ class TodosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $todo = Todo::find($id);
+        if ($request->input('task') != null)
+            $todo->task = $request->input('task');
+        if ($request->input('completed') != null)
+            $todo->isCompleted = $request->input('completed');
+        $todo->save();
+        return redirect('/');
     }
 
     /**
@@ -81,6 +94,8 @@ class TodosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $todo = Todo::find($id);
+        $todo->delete();
+        return redirect('/');
     }
 }

@@ -3,6 +3,7 @@
 }
 
 .todo-item {
+    position: relative;
     flex-direction: row;
     align-items: center;
     padding: 0 5px;
@@ -13,13 +14,27 @@
         margin: 2px;
         padding-right: 10px;
     }
+
+    .btn-edit-task {
+        position: absolute;
+        top: 15px;
+        right: 38px;
+    }
+
+    .btn-delete-task {
+        position: absolute;
+        border: none;
+        background: transparent;
+        top: 14px;
+        right: 8px;
+    }
 }
 
 .todo-item:hover {
     cursor: pointer;
     background: #F4F6FF;
 
-    .bi-circle {
+    .bi-circle, .bi-check-circle-fill {
         display: none;
     }
 
@@ -28,8 +43,51 @@
     }
 }
 
+.add-todo {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    height: 50px;
+    position: relative;
+
+    .add-icon {
+        position: relative;
+        left: 8px;
+        top: 15px;
+    }
+
+    .btn-todo-task {
+        position: absolute;
+        border: none;
+        background: transparent;
+        top: 15px;
+        right: 10px;
+    }
+
+    .btn-todo-task:hover {
+        color: #57a0db;
+    }
+
+    .add-todo-task {
+        border: none;
+        padding-left: 38px;
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .add-todo-task:focus {
+        outline: none;
+        border-bottom: solid 2px #57a0db;
+    }
+
+}
+
+
 .completed {
-    margin: 20px 0px;
+    margin: 20px 0;
 
     .tick {
         color: green;
