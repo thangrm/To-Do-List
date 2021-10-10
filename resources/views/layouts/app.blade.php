@@ -13,6 +13,10 @@
 <div class="container">
     @yield('content')
 </div>
-<footer class="text-center"> Copyright 2021</footer>
+<footer class="text-center" style="position: fixed; bottom: 0; width: 100%; padding: 10px 0px">
+    Copyright 2021
+    <br>
+    Ha Noi University of Industry
+</footer>
 </body>
 </html>

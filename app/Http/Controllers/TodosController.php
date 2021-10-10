@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todo;
+use Illuminate\Support\Facades\DB;
 
 class TodosController extends Controller
 {
@@ -14,6 +15,7 @@ class TodosController extends Controller
      */
     public function index()
     {
+        Todo::where('created_at', '<', DB::raw('DATE_SUB(UTC_TIMESTAMP(), INTERVAL 15 MINUTE)'))->delete();
         $todo = Todo::all();
         return view('index')->with("todos", $todo);
     }

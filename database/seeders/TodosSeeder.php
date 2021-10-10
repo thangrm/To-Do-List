@@ -16,14 +16,23 @@ class TodosSeeder extends Seeder
      */
     public function run()
     {
-        $data = ['Task 1', 'Task 2', 'Task 3'];
-
+        $data = ['Công việc 1', 'Task 2', 'Task 3'];
         foreach ($data as $item) {
             DB::table('todos')->insert([
                 'task' => $item,
                 'isCompleted' => false,
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime()
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 00:00:00'
+            ]);
+        }
+
+        $dataCompleted = ['Task 4', 'Task 5'];
+        foreach ($dataCompleted as $item) {
+            DB::table('todos')->insert([
+                'task' => $item,
+                'isCompleted' => true,
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 00:00:00'
             ]);
         }
     }
