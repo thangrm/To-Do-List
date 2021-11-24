@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <h1 class="text-center">To Do</h1>
+    <h1 class="text-center" style="padding-top: 10px;">To Do</h1>
     @error('task')
-    <div class="alert alert-danger">{{ $message }}</div>
+        <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     <div id="listTodos">
         <div class="card">
@@ -24,7 +24,7 @@
             <span class="task">{{ $todo->task }}</span>
 
             <div data-bs-toggle="modal" data-bs-target="#editTaskModal" role="button" aria-expanded="false"
-                 aria-controls="collapseExample" onclick="editTask({{ $todo['id'] }}, '{{ $todo['task'] }}');">
+                aria-controls="collapseExample" onclick="editTask({{ $todo['id'] }}, '{{ $todo['task'] }}');">
                 <i class="bi bi-pen btn-edit-task"></i>
             </div>
             <form action="/todo/{{ $todo->id }}" method="post">
@@ -56,8 +56,7 @@
                         <fieldset>
                             <div class="mb-3">
                                 <label for="editTaskInput" class="form-label required">Công việc</label>
-                                <input type="text" id="editTaskInput" name="task" class="form-control"
-                                       value="lorem ipus">
+                                <input type="text" id="editTaskInput" name="task" class="form-control" value="lorem ipus">
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary" style="color: white">Lưu</button>
@@ -75,16 +74,16 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#listCompleted" aria-expanded="true" aria-controls="listCompleted">
+                    data-bs-target="#listCompleted" aria-expanded="true" aria-controls="listCompleted">
                     Đã hoàn thành {{ $countTaskCompleted }}
                 </button>
             </h2>
             <div id="listCompleted" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                 data-bs-parent="#completed">
-            @foreach ($todos as $todo)
+                data-bs-parent="#completed">
+                @foreach ($todos as $todo)
 
-                @if($todo['isCompleted'] == '1')
-                    <!-- list todo -->
+                    @if ($todo['isCompleted'] == '1')
+                        <!-- list todo -->
                         <div class="card todo-item checked">
                             <i class="bi bi-check-circle-fill tick"></i>
                             <i class="bi bi-check-circle tick hidden" onclick="check({{ $todo['id'] }},'0');"></i>
